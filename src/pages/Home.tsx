@@ -48,22 +48,25 @@ const projects: Project[] = [
 const trayectoria = [
   {
     period: 'Feb 2026 — Actualidad',
-    title: 'Programador informático',
+    title: 'Ingeniero informático · Twave',
     text: 'Desarrollo de software (backend y frontend) relacionado con el monitoreo de máquinas industriales y el análisis de vibraciones.',
   },
   {
     period: 'Sep 2025 — Ene 2026',
-    title: 'Prácticas de empresa — Inteligencia artificial',
+    title: 'Prácticas de empresa — Inteligencia artificial · Twave',
     text: 'Implementación y mejora de tareas mediante IA en el contexto de una aplicación para el monitoreo de máquinas industriales y análisis de vibraciones.',
   },
   {
     period: 'Nov 2024 — Ene 2025',
-    title: 'Prácticas de empresa — Departamento de Herramientas Internas',
+    title: 'Prácticas de empresa — Departamento de Herramientas Internas · Alysis Digital',
     text: 'Diseño y desarrollo de workflows, administración de perfiles, traspaso de información entre tecnologías y desarrollo QA.',
   },
+]
+
+const formacion = [
   {
     period: '2021 — 2026',
-    title: 'Grado en Ingeniería Informática del Software — Universidad de Oviedo',
+    title: 'Grado en Ingeniería Informática del Software · Universidad de Oviedo',
     text: 'Itinerario bilingüe (inglés avanzado). TFG dedicado a la automatización de tareas periódicas mediante inteligencia artificial. Quinto puesto en el Hackathon de IA 2025 de construcción y entrenamiento de LLMs.',
   },
 ]
@@ -114,6 +117,21 @@ export default function Home() {
             <li key={item.title} className="relative mb-10 last:mb-0">
               <span className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-neutral-950 bg-sky-400" />
               <p className="text-sm font-medium uppercase tracking-wide text-sky-400">{item.period}</p>
+              <h3 className="mt-1 text-xl font-semibold">{item.title}</h3>
+              <p className="mt-2 text-neutral-300">{item.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Formación */}
+      <section id="formacion" className="mx-auto max-w-4xl px-6 py-16">
+        <h2 className="mb-10 text-3xl font-semibold">Formación</h2>
+        <ol className="relative border-l border-neutral-700 pl-8">
+          {formacion.map((item) => (
+            <li key={item.title} className="relative mb-10 last:mb-0">
+              <span className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-neutral-950 bg-emerald-400" />
+              <p className="text-sm font-medium uppercase tracking-wide text-emerald-400">{item.period}</p>
               <h3 className="mt-1 text-xl font-semibold">{item.title}</h3>
               <p className="mt-2 text-neutral-300">{item.text}</p>
             </li>

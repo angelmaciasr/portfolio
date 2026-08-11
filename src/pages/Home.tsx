@@ -31,8 +31,11 @@ const projects: Project[] = [
   {
     name: 'TFG Project',
     description:
-      'Mi Trabajo de Fin de Grado: automatización de tareas periódicas mediante inteligencia artificial, englobando extracción de contenido, ejecución de tareas, visualización de resultados y un chatbot relacionado con la tarea.',
-    links: [{ label: 'GitHub', url: 'https://github.com/angelmaciasr/TFG-project.git' }],
+      'Mi Trabajo de Fin de Grado: construcción de un chatbot inteligente para consulta de información web y documental mediante LLMs y tecnologías web, con automatización de tareas periódicas y visualización de resultados.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/angelmaciasr/TFG-project.git' },
+      { label: 'Presentación (PDF)', url: '/presentacion-tfg.pdf' },
+    ],
     tags: ['IA', 'Automatización', 'Universidad'],
   },
   {

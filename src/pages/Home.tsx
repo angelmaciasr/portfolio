@@ -35,6 +35,7 @@ const projects: Project[] = [
     links: [
       { label: 'GitHub', url: 'https://github.com/angelmaciasr/TFG-project.git' },
       { label: 'Presentación (PDF)', url: '/presentacion-tfg.pdf' },
+      { label: 'Memoria (PDF)', url: '/memoria-tfg.pdf' },
     ],
     tags: ['IA', 'Automatización', 'Universidad'],
   },

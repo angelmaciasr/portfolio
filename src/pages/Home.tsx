@@ -2,194 +2,20 @@ import { useState } from 'react'
 import '../App.css'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import en from '@/i18n/en.json'
+import es from '@/i18n/es.json'
 
 type Lang = 'en' | 'es'
+type Content = typeof en
 
-type Project = {
-  name: string
-  description: string
-  links: { label: string; url: string }[]
-  tags: string[]
-  note?: string
-}
-
-type TimelineItem = {
-  period: string
-  title: string
-  text: string
-}
-
-const content: Record<
-  Lang,
-  {
-    name: string
-    role: string
-    hero: string
-    myGithub: string
-    viewProjects: string
-    trayectoriaTitle: string
-    formacionTitle: string
-    proyectosTitle: string
-    contact: string
-    trayectoria: TimelineItem[]
-    formacion: TimelineItem[]
-    projects: Project[]
-  }
-> = {
-  en: {
-    name: 'Ángel Macías Rodríguez',
-    role: 'Software Engineer',
-    hero: "Software Engineering graduate from the University of Oviedo, full of energy and eager to learn. I love taking on new challenges and pushing myself to achieve the best results together with my teammates, working as part of a team in a great atmosphere to reach goals with higher quality.",
-    myGithub: 'My GitHub',
-    viewProjects: 'View projects',
-    trayectoriaTitle: 'Career path',
-    formacionTitle: 'Education',
-    proyectosTitle: 'Projects',
-    contact: 'Contact',
-    trayectoria: [
-      {
-        period: 'Feb 2026 — Present',
-        title: 'Software Engineer · Twave',
-        text: 'Software development (backend and frontend) related to industrial machine monitoring and vibration analysis.',
-      },
-      {
-        period: 'Sep 2025 — Jan 2026',
-        title: 'Internship — Artificial Intelligence · Twave',
-        text: 'Implementation and improvement of AI-powered tasks within an application for industrial machine monitoring and vibration analysis.',
-      },
-      {
-        period: 'Nov 2024 — Jan 2025',
-        title: 'Internship — Internal Tools Department · Alysis Digital',
-        text: 'Design and development of workflows, profile administration, data transfer between technologies and QA development.',
-      },
-    ],
-    formacion: [
-      {
-        period: '2021 — 2026',
-        title: 'BSc in Software Engineering · University of Oviedo',
-        text: 'Bilingual programme (advanced English). Final degree project on the automation of periodic tasks using artificial intelligence. Fifth place in the 2025 AI Hackathon on building and training LLMs.',
-      },
-    ],
-    projects: [
-      {
-        name: 'UNO Game',
-        description:
-          'The classic UNO card game as an online multiplayer experience. Frontend built with Elm and backend in Go, with real-time communication through NATS and containerized deployment with Docker.',
-        links: [
-          { label: 'Backend (Go)', url: 'https://github.com/angelmaciasr/Uno_game.git' },
-          { label: 'Frontend (Elm)', url: 'https://github.com/angelmaciasr/Uno_game_front.git' },
-        ],
-        tags: ['Elm', 'Go', 'NATS', 'Docker'],
-      },
-      {
-        name: 'My Clipboard',
-        description:
-          'An infinite clipboard for Linux: it keeps the full history of everything you copy so you can recover it at any time.',
-        links: [{ label: 'GitHub', url: 'https://github.com/angelmaciasr/my-clipboard.git' }],
-        tags: ['Linux', 'Tool'],
-      },
-      {
-        name: 'TFG Project',
-        description:
-          'My final degree project: building an intelligent chatbot for querying web and document information using LLMs and web technologies, with automation of periodic tasks and results visualization.',
-        links: [
-          { label: 'GitHub', url: 'https://github.com/angelmaciasr/TFG-project.git' },
-          { label: 'Slides (PDF)', url: '/presentacion-tfg.pdf' },
-          { label: 'Thesis (PDF)', url: '/memoria-tfg.pdf' },
-        ],
-        tags: ['AI', 'Automation', 'University'],
-      },
-      {
-        name: 'STAP (wiq_en3a)',
-        description:
-          'A game developed as a team together with several classmates within the Arquisoft project. I contributed as a member of the development team.',
-        links: [{ label: 'GitHub', url: 'https://github.com/Arquisoft/wiq_en3a.git' }],
-        tags: ['Teamwork', 'Web game'],
-        note: 'Collaborative project — contributed as a team member',
-      },
-    ],
-  },
-  es: {
-    name: 'Ángel Macías Rodríguez',
-    role: 'Ingeniero Informático del Software',
-    hero: 'Graduado en Ingeniería Informática del Software por la Universidad de Oviedo, con energía y ganas de aprender. Me gusta buscar nuevos retos y esforzarme al máximo para conseguir el mejor resultado junto a mis compañeros, trabajando en equipo y con un buen ambiente para cumplir metas con mayor calidad.',
-    myGithub: 'Mi GitHub',
-    viewProjects: 'Ver proyectos',
-    trayectoriaTitle: 'Trayectoria',
-    formacionTitle: 'Formación',
-    proyectosTitle: 'Proyectos',
-    contact: 'Contacto',
-    trayectoria: [
-      {
-        period: 'Feb 2026 — Actualidad',
-        title: 'Ingeniero informático · Twave',
-        text: 'Desarrollo de software (backend y frontend) relacionado con el monitoreo de máquinas industriales y el análisis de vibraciones.',
-      },
-      {
-        period: 'Sep 2025 — Ene 2026',
-        title: 'Prácticas de empresa — Inteligencia artificial · Twave',
-        text: 'Implementación y mejora de tareas mediante IA en el contexto de una aplicación para el monitoreo de máquinas industriales y análisis de vibraciones.',
-      },
-      {
-        period: 'Nov 2024 — Ene 2025',
-        title: 'Prácticas de empresa — Departamento de Herramientas Internas · Alysis Digital',
-        text: 'Diseño y desarrollo de workflows, administración de perfiles, traspaso de información entre tecnologías y desarrollo QA.',
-      },
-    ],
-    formacion: [
-      {
-        period: '2021 — 2026',
-        title: 'Grado en Ingeniería Informática del Software · Universidad de Oviedo',
-        text: 'Itinerario bilingüe (inglés avanzado). TFG dedicado a la automatización de tareas periódicas mediante inteligencia artificial. Quinto puesto en el Hackathon de IA 2025 de construcción y entrenamiento de LLMs.',
-      },
-    ],
-    projects: [
-      {
-        name: 'UNO Game',
-        description:
-          'El clásico juego de cartas UNO en versión multijugador online. Frontend desarrollado en Elm y backend en Go, con comunicación en tiempo real a través de NATS y despliegue contenerizado con Docker.',
-        links: [
-          { label: 'Backend (Go)', url: 'https://github.com/angelmaciasr/Uno_game.git' },
-          { label: 'Frontend (Elm)', url: 'https://github.com/angelmaciasr/Uno_game_front.git' },
-        ],
-        tags: ['Elm', 'Go', 'NATS', 'Docker'],
-      },
-      {
-        name: 'My Clipboard',
-        description:
-          'Un portapapeles infinito para Linux: guarda el historial completo de todo lo que copias para recuperarlo en cualquier momento.',
-        links: [{ label: 'GitHub', url: 'https://github.com/angelmaciasr/my-clipboard.git' }],
-        tags: ['Linux', 'Herramienta'],
-      },
-      {
-        name: 'TFG Project',
-        description:
-          'Mi Trabajo de Fin de Grado: construcción de un chatbot inteligente para consulta de información web y documental mediante LLMs y tecnologías web, con automatización de tareas periódicas y visualización de resultados.',
-        links: [
-          { label: 'GitHub', url: 'https://github.com/angelmaciasr/TFG-project.git' },
-          { label: 'Presentación (PDF)', url: '/presentacion-tfg.pdf' },
-          { label: 'Memoria (PDF)', url: '/memoria-tfg.pdf' },
-        ],
-        tags: ['IA', 'Automatización', 'Universidad'],
-      },
-      {
-        name: 'STAP (wiq_en3a)',
-        description:
-          'Juego desarrollado en equipo junto a varios compañeros dentro del proyecto Arquisoft. Participé como parte del equipo de desarrollo.',
-        links: [{ label: 'GitHub', url: 'https://github.com/Arquisoft/wiq_en3a.git' }],
-        tags: ['Trabajo en equipo', 'Juego web'],
-        note: 'Proyecto colaborativo — participación como miembro del equipo',
-      },
-    ],
-  },
-}
+const translations: Record<Lang, Content> = { en, es }
 
 const linkButtonClass =
   'inline-flex items-center justify-center gap-1 rounded-md border border-neutral-500 bg-neutral-800 px-4 h-9 text-sm font-medium text-neutral-100 transition-colors hover:bg-neutral-600 hover:text-white'
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>('en')
-  const t = content[lang]
+  const t = translations[lang]
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
@@ -219,7 +45,7 @@ export default function Home() {
       <header className="mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 py-16 text-center sm:flex-row sm:text-left">
         <img
           src="/foto.jpg"
-          alt={lang === 'en' ? 'Photo of Ángel Macías' : 'Foto de Ángel Macías'}
+          alt={t.photoAlt}
           className="h-44 w-44 shrink-0 rounded-full border-4 border-neutral-700 object-cover shadow-xl"
         />
         <div>

@@ -44,7 +44,7 @@ export default function Home() {
       {/* Hero */}
       <header className="mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 py-16 text-center sm:flex-row sm:text-left">
         <img
-          src="/foto.jpg"
+          src="/foto.png"
           alt={t.photoAlt}
           className="h-44 w-44 shrink-0 rounded-full border-4 border-neutral-700 object-cover shadow-xl"
         />
@@ -63,6 +63,9 @@ export default function Home() {
             </a>
             <a href="#proyectos" className={linkButtonClass}>
               {t.viewProjects}
+            </a>
+            <a href="/cv.pdf" target="_blank" rel="noreferrer" className={linkButtonClass}>
+              {t.myCv} ↗
             </a>
           </div>
         </div>

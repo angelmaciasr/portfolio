@@ -36,6 +36,12 @@
   ],
   "projects": [
     {
+      "name": "Eye Sentinel",
+      "description": "Monitor local de somnolencia que combina la apertura ocular calibrada, PERCLOS y la orientación de la cabeza para detectar cierres prolongados y posturas de riesgo en tiempo real. El vídeo se procesa en el dispositivo y nunca se almacena ni se envía a un servidor.",
+      "links": [{ "label": "GitHub", "url": "https://github.com/angelmaciasr/eyetracker.git" }],
+      "tags": ["Python", "MediaPipe", "OpenCV", "Visión artificial"]
+    },
+    {
       "name": "UNO Game",
       "description": "El clásico juego de cartas UNO en versión multijugador online. Frontend desarrollado en Elm y backend en Go, con comunicación en tiempo real a través de NATS y despliegue contenerizado con Docker.",
       "links": [

@@ -36,6 +36,12 @@
   ],
   "projects": [
     {
+      "name": "Agendator",
+      "description": "Generador de agendas y calendarios imprimibles en PDF a partir de plantillas de imagen. Reconoce fechas mediante OCR, permite ajustar su posición y conserva el diseño original al generar páginas diarias o semanales en formato A4 o A5. Todo el procesamiento se realiza en el navegador.",
+      "links": [{ "label": "GitHub", "url": "https://github.com/angelmaciasr/agendator" }],
+      "tags": ["React", "TypeScript", "Tesseract.js", "pdf-lib"]
+    },
+    {
       "name": "Eye Sentinel",
       "description": "Monitor local de somnolencia que combina la apertura ocular calibrada, PERCLOS y la orientación de la cabeza para detectar cierres prolongados y posturas de riesgo en tiempo real. El vídeo se procesa en el dispositivo y nunca se almacena ni se envía a un servidor.",
       "links": [{ "label": "GitHub", "url": "https://github.com/angelmaciasr/eyetracker.git" }],

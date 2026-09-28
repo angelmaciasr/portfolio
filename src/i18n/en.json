@@ -38,7 +38,10 @@
     {
       "name": "Agendator",
       "description": "A printable PDF planner and calendar generator built around image templates. It recognizes dates using OCR, lets you adjust their positions and preserves the original design when generating daily or weekly pages in A4 or A5 format. All processing runs in the browser.",
-      "links": [{ "label": "GitHub", "url": "https://github.com/angelmaciasr/agendator" }],
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/angelmaciasr/agendator" },
+        { "label": "Visit website", "url": "https://agendator.netlify.app" }
+      ],
       "tags": ["React", "TypeScript", "Tesseract.js", "pdf-lib"]
     },
     {
